@@ -47,6 +47,7 @@ export const snaxTheme = {
   heroBorder: "border-[1.5px] border-snax-400",
   heroGlow:
     "radial-gradient(circle at 50% 62%, rgba(242,196,56,0.3), rgba(242,196,56,0) 72%)",
+  headingColor: "text-ink",
   labelColor: "text-snax-label",
   noteColor: "text-ink/55",
   buttonBorder: "border-[1.5px] border-ink/24",
@@ -61,6 +62,7 @@ export const crespTheme = {
   heroBorder: "border-[1.5px] border-cresp-400",
   heroGlow:
     "radial-gradient(circle at 50% 62%, rgba(216,69,42,0.4), rgba(216,69,42,0) 72%)",
+  headingColor: "text-background",
   labelColor: "text-cresp-label",
   noteColor: "text-background/55",
   buttonBorder: "border-[1.5px] border-background/3",

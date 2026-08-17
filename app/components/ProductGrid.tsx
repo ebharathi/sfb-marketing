@@ -13,6 +13,7 @@ type Theme = {
   cardHoverBorder: string;
   heroBorder: string;
   heroGlow: string;
+  headingColor: string;
   labelColor: string;
   noteColor: string;
   buttonBorder: string;
@@ -68,7 +69,9 @@ export function ProductGrid({
                   Hero flavour
                 </div>
               )}
-              <h3 className="line-clamp-2 font-display text-xs uppercase leading-tight sm:text-lg">
+              <h3
+                className={`line-clamp-2 font-display text-xs uppercase leading-tight sm:text-lg ${theme.headingColor}`}
+              >
                 {product.name}
               </h3>
               <p className={`mt-1 line-clamp-1 text-[11px] sm:text-[13px] ${theme.noteColor}`}>

@@ -104,12 +104,12 @@ html {
 }
 
 .animate-collide-left {
-  animation: sfb-collide-left 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: sfb-collide-left 1.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .animate-collide-right {
-  animation: sfb-collide-right 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
-  animation-delay: 0.12s;
+  animation: sfb-collide-right 1.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.25s;
 }
 
 body {
