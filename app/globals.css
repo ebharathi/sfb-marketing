@@ -1,26 +1,98 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fffdf7;
+  --foreground: #1a1410;
+
+  /* Snaxzastic: roasted, tangy, everyday. Warm turmeric-yellow / green. */
+  --snax-50: #fffaea;
+  --snax-100: #fef0c2;
+  --snax-400: #f2b705;
+  --snax-500: #e0a300;
+  --snax-600: #b97e00;
+  --snax-900: #3d2e00;
+  --snax-accent: #5c7a29;
+
+  /* Crespology: crafted, indulgent crunch. Rich red-orange. */
+  --cresp-50: #fff3ef;
+  --cresp-100: #ffdcd0;
+  --cresp-400: #ff6a3d;
+  --cresp-500: #ef4a1c;
+  --cresp-600: #c8330f;
+  --cresp-900: #400f04;
+  --cresp-accent: #8a1c0f;
+
+  --ink-950: #171008;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  --color-snax-50: var(--snax-50);
+  --color-snax-100: var(--snax-100);
+  --color-snax-400: var(--snax-400);
+  --color-snax-500: var(--snax-500);
+  --color-snax-600: var(--snax-600);
+  --color-snax-900: var(--snax-900);
+  --color-snax-accent: var(--snax-accent);
+
+  --color-cresp-50: var(--cresp-50);
+  --color-cresp-100: var(--cresp-100);
+  --color-cresp-400: var(--cresp-400);
+  --color-cresp-500: var(--cresp-500);
+  --color-cresp-600: var(--cresp-600);
+  --color-cresp-900: var(--cresp-900);
+  --color-cresp-accent: var(--cresp-accent);
+
+  --color-ink-950: var(--ink-950);
+
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--snax-500) var(--background);
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
   }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 32s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--snax-500), var(--cresp-500));
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(var(--snax-600), var(--cresp-600));
 }
