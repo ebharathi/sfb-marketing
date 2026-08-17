@@ -1,6 +1,4 @@
-import Image from "next/image";
 import { Reveal } from "./Reveal";
-import { Carousel } from "./Carousel";
 import { ProductGrid } from "./ProductGrid";
 
 type Product = {
@@ -90,44 +88,7 @@ export function FlavourShowcase() {
               </p>
             </Reveal>
 
-            <div className="sm:hidden">
-              <ProductGrid products={section.products} />
-            </div>
-
-            <div className="mt-10 hidden sm:block">
-              <Carousel>
-                {section.products.map((product, i) => (
-                  <Reveal
-                    key={product.name}
-                    delay={Math.min(i, 6) * 0.06}
-                    className="w-[220px] shrink-0 snap-start"
-                  >
-                    <div
-                      data-card
-                      className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-ink-950/5 transition-shadow hover:shadow-xl"
-                    >
-                      <div className="relative h-56 shrink-0 overflow-hidden">
-                        <Image
-                          src={product.image}
-                          alt={product.name}
-                          fill
-                          sizes="220px"
-                          className="object-cover transition-transform duration-500 group-hover:scale-110"
-                        />
-                      </div>
-                      <div className="p-4">
-                        <h4 className="font-display text-base font-bold leading-tight text-ink-950">
-                          {product.name}
-                        </h4>
-                        <p className="mt-1 text-sm text-ink-950/60">
-                          {product.note}
-                        </p>
-                      </div>
-                    </div>
-                  </Reveal>
-                ))}
-              </Carousel>
-            </div>
+            <ProductGrid products={section.products} />
           </div>
         </section>
       ))}

@@ -10,7 +10,7 @@ type Product = {
   image: string;
 };
 
-const INITIAL_COUNT = 6;
+const INITIAL_COUNT = 8;
 
 export function ProductGrid({ products }: { products: Product[] }) {
   const [expanded, setExpanded] = useState(false);
@@ -32,10 +32,10 @@ export function ProductGrid({ products }: { products: Product[] }) {
                 />
               </div>
               <div className="p-4">
-                <h4 className="font-display text-sm font-bold leading-tight text-ink-950 sm:text-base">
+                <h4 className="line-clamp-2 font-display text-sm font-bold leading-tight text-ink-950 sm:text-base">
                   {product.name}
                 </h4>
-                <p className="mt-1 text-xs text-ink-950/60 sm:text-sm">
+                <p className="mt-1 line-clamp-1 text-xs text-ink-950/60 sm:text-sm">
                   {product.note}
                 </p>
               </div>
