@@ -1,84 +1,106 @@
-"use client";
-
 import Image from "next/image";
-import { motion } from "framer-motion";
 
 const PANELS = [
   {
     id: "snaxzastic",
     brand: "Snaxzastic",
-    tagline: "Snacking Anywhere",
+    title: ["Snacking", "Anywhere"],
     message: "Roasted right, zinged with nimbu-pudina.",
     sub: "Nimbu Pudina Roasted Chana & Roasted Peanuts",
-    image:
-      "https://images.unsplash.com/photo-1596503799872-5c5f052c27b9?w=1400&q=80&fm=jpg&fit=crop&auto=format",
-    bg: "from-snax-100 via-snax-50 to-snax-50",
-    chip: "bg-snax-500 text-snax-900",
-    cta: "bg-snax-900 text-white hover:bg-snax-600",
+    bg: "bg-gradient-to-br from-snax-400 to-snax-600",
+    eyebrow: "text-ink/58",
+    heading: "text-ink",
+    body: "text-ink/78",
+    circle: "border-ink/22",
+    subColor: "text-ink/60",
+    cta: "bg-ink text-background hover:bg-green",
+    img1: "/products/p-nimbu-roasted-chana.png",
+    img2: "/products/p-nimbu-coated-peanuts.png",
   },
   {
     id: "crespology",
     brand: "Crespology",
-    tagline: "Crispy Vibes Only",
+    title: ["Crispy", "Vibes Only"],
     message: "Crafted crunch, every single bite.",
     sub: "Cheese Balls & Krunchit Spanish Tomato",
-    image:
-      "https://images.unsplash.com/photo-1772795491387-fd6d7327a626?w=1400&q=80&fm=jpg&fit=crop&auto=format",
-    bg: "from-cresp-100 via-cresp-50 to-cresp-50",
-    chip: "bg-cresp-500 text-white",
-    cta: "bg-cresp-600 text-white hover:bg-cresp-500",
+    bg: "bg-gradient-to-br from-cresp-400 to-cresp-600",
+    eyebrow: "text-background/62",
+    heading: "text-background",
+    body: "text-background/80",
+    circle: "border-background/24",
+    subColor: "text-background/66",
+    cta: "bg-background text-cresp-600 hover:bg-ink hover:text-background",
+    img1: "/products/p-cheeseballs-herbs.png",
+    img2: "/products/p-krunchit-tomato.png",
   },
 ] as const;
 
 export function Hero() {
   return (
-    <section id="top" className="pt-24 lg:pt-28">
-      <div className="grid grid-cols-1 lg:grid-cols-2">
-        {PANELS.map((panel, i) => (
-          <motion.a
-            key={panel.id}
-            href={`#${panel.id}`}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className={`group relative flex min-h-[560px] flex-col justify-end overflow-hidden bg-gradient-to-b ${panel.bg} p-5 sm:p-8 lg:min-h-[680px] lg:p-14`}
-          >
-            <div className="absolute inset-0">
+    <div id="top" className="grid grid-cols-1 lg:grid-cols-2">
+      {PANELS.map((panel) => (
+        <a
+          key={panel.id}
+          href={`/${panel.id}`}
+          className={`relative flex flex-col justify-between overflow-hidden ${panel.bg} p-8 sm:p-12 lg:min-h-[720px] lg:p-16`}
+        >
+          <div className="relative z-10">
+            <div
+              className={`mb-3.5 font-display text-xl tracking-[0.3em] uppercase ${panel.eyebrow}`}
+            >
+              {panel.brand}
+            </div>
+            <h1
+              className={`m-0 font-display text-6xl leading-[0.85] uppercase tracking-tight sm:text-7xl lg:text-8xl ${panel.heading}`}
+            >
+              {panel.title[0]}
+              <br />
+              {panel.title[1]}
+            </h1>
+            <p className={`mt-5 max-w-sm text-lg leading-relaxed ${panel.body}`}>
+              {panel.message}
+            </p>
+          </div>
+
+          <div className="relative my-6 flex min-h-[260px] items-end justify-center sm:min-h-[300px]">
+            <div
+              className={`absolute bottom-5 h-[380px] w-[380px] animate-sfb-spin rounded-full border-[1.5px] border-dashed sm:h-[440px] sm:w-[440px] ${panel.circle}`}
+            />
+            <div className="animate-collide-left relative h-[240px] w-[180px] sm:h-[300px] sm:w-[220px]">
               <Image
-                src={panel.image}
+                src={panel.img1}
                 alt={panel.sub}
                 fill
-                priority={i === 0}
-                className="object-cover opacity-90 mix-blend-multiply transition-transform duration-700 ease-out group-hover:scale-105"
+                priority
+                sizes="220px"
+                className="z-[2] object-contain drop-shadow-[0_34px_44px_rgba(0,0,0,0.34)]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
             </div>
+            <div className="animate-collide-right relative -ml-12 h-[200px] w-[150px] sm:-ml-16 sm:h-[250px] sm:w-[190px]">
+              <Image
+                src={panel.img2}
+                alt={panel.sub}
+                fill
+                sizes="190px"
+                className="z-[1] object-contain drop-shadow-[0_30px_40px_rgba(0,0,0,0.3)]"
+              />
+            </div>
+          </div>
 
-            <div className="relative flex flex-col items-start gap-4 text-left text-white">
-              <span
-                className={`w-fit rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wide ${panel.chip}`}
-              >
-                {panel.brand}
-              </span>
-              <h2 className="font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-                {panel.tagline}
-              </h2>
-              <p className="max-w-md text-lg font-medium text-white/90">
-                {panel.message}
-              </p>
-              <p className="text-sm font-semibold uppercase tracking-wide text-white/70">
-                {panel.sub}
-              </p>
-              <span
-                className={`mt-4 inline-flex w-fit items-center gap-2 rounded-full px-6 py-3 text-sm font-bold shadow-lg transition-transform group-hover:translate-x-1 ${panel.cta}`}
-              >
-                Explore flavours
-                <span aria-hidden>&rarr;</span>
-              </span>
+          <div className="relative z-10">
+            <div
+              className={`mb-4 text-xs font-semibold uppercase tracking-[0.12em] ${panel.subColor}`}
+            >
+              {panel.sub}
             </div>
-          </motion.a>
-        ))}
-      </div>
-    </section>
+            <span
+              className={`inline-flex items-center gap-2.5 rounded-full px-7 py-4 text-base font-semibold transition-colors ${panel.cta}`}
+            >
+              Explore flavours <span aria-hidden>&rarr;</span>
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
   );
 }

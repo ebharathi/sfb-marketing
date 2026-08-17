@@ -1,34 +1,60 @@
-import { Reveal } from "./Reveal";
+import Image from "next/image";
 
 export function DistributorBand() {
   return (
-    <section
-      id="distributor"
-      className="relative overflow-hidden bg-gradient-to-r from-snax-500 via-snax-400 to-cresp-500 py-16 lg:py-20"
-    >
-      <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 px-4 sm:px-6 lg:flex-row lg:items-center lg:px-10">
-        <Reveal>
-          <p className="text-xs font-bold uppercase tracking-widest text-ink-950/60">
+    <section className="mx-auto max-w-[1400px] px-4 pt-16 pb-16 sm:px-10 sm:pt-24 sm:pb-24">
+      <div
+        id="distributor"
+        className="grid grid-cols-1 items-center gap-8 rounded-[26px] bg-ink p-8 sm:p-14 lg:grid-cols-[1.05fr_0.95fr]"
+      >
+        <div>
+          <div className="mb-3.5 text-xs font-bold tracking-[0.22em] text-snax-400 uppercase">
             Trade partner?
-          </p>
-          <h3 className="mt-2 max-w-xl font-display text-3xl font-extrabold tracking-tight text-ink-950 sm:text-4xl">
-            Become a Distributor
-          </h3>
-          <p className="mt-2 max-w-lg text-ink-950/70">
+          </div>
+          <h2 className="m-0 mb-4 font-display text-4xl uppercase leading-[0.96] text-background sm:text-6xl">
+            Become a distributor
+          </h2>
+          <p className="mb-7 max-w-md text-lg leading-relaxed text-background/72">
             Bring Snaxzastic and Crespology to your territory. Tell us your
             business, your coverage, and we&apos;ll get back with catalog,
             pricing, and terms.
           </p>
-        </Reveal>
-        <Reveal delay={0.1}>
           <a
             href="/distributor"
-            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-ink-950 px-7 py-4 text-sm font-bold text-white shadow-lg transition-transform hover:scale-[1.03] active:scale-[0.98]"
+            className="inline-flex items-center gap-2.5 rounded-full bg-snax-400 px-8 py-4 text-base font-bold text-ink transition-colors hover:bg-background"
           >
-            Enquire to become a distributor
-            <span aria-hidden>&rarr;</span>
+            Enquire to become a distributor <span aria-hidden>&rarr;</span>
           </a>
-        </Reveal>
+        </div>
+        <div className="flex items-end justify-center">
+          <div className="relative h-[150px] w-[110px] -rotate-[8deg] sm:h-[200px] sm:w-[150px]">
+            <Image
+              src="/products/p-nimbu-roasted-chana.png"
+              alt="Nimbu Pudina Roasted Chana pack"
+              fill
+              sizes="150px"
+              className="object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.5)]"
+            />
+          </div>
+          <div className="relative z-[2] -ml-6 h-[170px] w-[130px] sm:-ml-8 sm:h-[230px] sm:w-[170px]">
+            <Image
+              src="/products/p-cheeseballs-herbs.png"
+              alt="Cheese Balls pack"
+              fill
+              sizes="170px"
+              className="object-contain drop-shadow-[0_24px_34px_rgba(0,0,0,0.5)]"
+            />
+          </div>
+          <div className="relative -ml-6 h-[150px] w-[110px] rotate-[8deg] sm:-ml-8 sm:h-[200px] sm:w-[150px]">
+            <Image
+              src="/products/p-krunchit-tomato.png"
+              alt="Krunchit Spanish Tomato pack"
+              fill
+              sizes="150px"
+              className="object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.5)]"
+            />
+          </div>
+        </div>
       </div>
     </section>
   );

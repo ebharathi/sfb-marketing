@@ -1,27 +1,45 @@
-import { Reveal } from "./Reveal";
-
 const CLAIMS = [
-  { icon: "✓", label: "Quality checked ingredients" },
-  { icon: "✦", label: "Hygienic manufacturing" },
-  { icon: "◆", label: "No compromise recipes" },
-  { icon: "●", label: "Freshly packed" },
+  {
+    icon: "✓",
+    label: "Quality checked ingredients",
+    body: "Every batch is screened before it enters the line.",
+  },
+  {
+    icon: "✦",
+    label: "Hygienic manufacturing",
+    body: "Made at our Tarapur MIDC plant under audited conditions.",
+  },
+  {
+    icon: "◆",
+    label: "No compromise recipes",
+    body: "Recipes locked at source, no substitutions to hit a price.",
+  },
+  {
+    icon: "●",
+    label: "Freshly packed",
+    body: "Sealed on line and dispatched fast, so shelf crunch holds.",
+  },
 ];
 
-export function TrustStrip() {
+export function TrustStrip({ accent = "text-green" as string }) {
   return (
-    <section className="border-y border-ink-950/8 bg-white">
-      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-4 py-10 sm:grid-cols-4 sm:px-6 lg:px-10">
-        {CLAIMS.map((claim, i) => (
-          <Reveal key={claim.label} delay={i * 0.06} y={12}>
-            <div className="flex items-center gap-3">
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-ink-950 text-sm font-bold text-white">
-                {claim.icon}
-              </span>
-              <span className="text-sm font-semibold text-ink-950/80">
-                {claim.label}
-              </span>
+    <section className="mx-auto max-w-[1400px] px-4 pt-12 sm:px-10 sm:pt-20">
+      <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
+        {CLAIMS.map((claim) => (
+          <div
+            key={claim.label}
+            className="rounded-xl border border-ink/10 bg-white p-4 sm:rounded-2xl sm:p-6"
+          >
+            <div className={`mb-2 font-display text-xl sm:mb-3 sm:text-3xl ${accent}`}>
+              {claim.icon}
             </div>
-          </Reveal>
+            <div className="mb-1 text-xs font-semibold sm:mb-1.5 sm:text-base">
+              {claim.label}
+            </div>
+            <div className="hidden text-sm leading-relaxed text-ink/55 sm:block">
+              {claim.body}
+            </div>
+          </div>
         ))}
       </div>
     </section>

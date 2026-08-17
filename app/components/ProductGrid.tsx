@@ -1,57 +1,94 @@
-"use client";
-
 import Image from "next/image";
-import { useState } from "react";
-import { Reveal } from "./Reveal";
 
 type Product = {
   name: string;
   note: string;
   image: string;
+  hero?: boolean;
 };
 
-const INITIAL_COUNT = 8;
+type Theme = {
+  cardBg: string;
+  cardBorder: string;
+  cardHoverBorder: string;
+  heroBorder: string;
+  heroGlow: string;
+  labelColor: string;
+  noteColor: string;
+  buttonBorder: string;
+  buttonHover: string;
+  buttonText: string;
+};
 
-export function ProductGrid({ products }: { products: Product[] }) {
-  const [expanded, setExpanded] = useState(false);
-  const visible = expanded ? products : products.slice(0, INITIAL_COUNT);
+const TEASER_COUNT = 8;
+
+export function ProductGrid({
+  products,
+  theme,
+  showAllLabel,
+  moreHref,
+}: {
+  products: Product[];
+  theme: Theme;
+  showAllLabel: string;
+  /** If set, shows only a teaser and links out to the full brand page. If omitted, shows every product. */
+  moreHref?: string;
+}) {
+  const visible = moreHref ? products.slice(0, TEASER_COUNT) : products;
 
   return (
-    <div className="mt-10">
-      <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
-        {visible.map((product, i) => (
-          <Reveal key={product.name} delay={Math.min(i, 6) * 0.06}>
-            <div className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-ink-950/5 transition-shadow hover:shadow-xl">
-              <div className="relative h-40 shrink-0 overflow-hidden sm:h-56">
+    <div>
+      <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
+        {visible.map((product) => (
+          <div
+            key={product.name}
+            className={`flex h-full flex-col gap-2.5 rounded-2xl border p-3 transition-colors sm:gap-3.5 sm:p-5 ${theme.cardBg} ${
+              product.hero ? theme.heroBorder : theme.cardBorder
+            } ${theme.cardHoverBorder}`}
+          >
+            <div
+              className="flex h-24 items-center justify-center rounded-xl sm:h-36"
+              style={product.hero ? { background: theme.heroGlow } : undefined}
+            >
+              <div className="relative h-20 w-full sm:h-32">
                 <Image
                   src={product.image}
                   alt={product.name}
                   fill
-                  sizes="(min-width: 1024px) 220px, 45vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  sizes="140px"
+                  className="object-contain drop-shadow-[0_12px_18px_rgba(0,0,0,0.2)]"
                 />
               </div>
-              <div className="p-4">
-                <h4 className="line-clamp-2 font-display text-sm font-bold leading-tight text-ink-950 sm:text-base">
-                  {product.name}
-                </h4>
-                <p className="mt-1 line-clamp-1 text-xs text-ink-950/60 sm:text-sm">
-                  {product.note}
-                </p>
-              </div>
             </div>
-          </Reveal>
+            <div>
+              {product.hero && (
+                <div
+                  className={`mb-1 text-[9px] font-bold tracking-[0.18em] uppercase sm:text-[10px] ${theme.labelColor}`}
+                >
+                  Hero flavour
+                </div>
+              )}
+              <h3 className="line-clamp-2 font-display text-xs uppercase leading-tight sm:text-lg">
+                {product.name}
+              </h3>
+              <p className={`mt-1 line-clamp-1 text-[11px] sm:text-[13px] ${theme.noteColor}`}>
+                {product.note}
+              </p>
+            </div>
+          </div>
         ))}
       </div>
 
-      {products.length > INITIAL_COUNT && (
-        <button
-          type="button"
-          onClick={() => setExpanded((v) => !v)}
-          className="mt-8 rounded-full bg-ink-950 px-6 py-3 text-sm font-bold text-white transition-transform hover:scale-[1.02] active:scale-[0.98]"
-        >
-          {expanded ? "Show less" : `Show all ${products.length} flavours`}
-        </button>
+      {moreHref && products.length > TEASER_COUNT && (
+        <div className="mt-7 flex justify-center sm:mt-8">
+          <a
+            href={moreHref}
+            className={`inline-flex items-center gap-2.5 rounded-full border px-6 py-3.5 text-sm font-semibold transition-colors ${theme.buttonBorder} ${theme.buttonText} ${theme.buttonHover}`}
+          >
+            {showAllLabel}
+            <span aria-hidden>&rarr;</span>
+          </a>
+        </div>
       )}
     </div>
   );

@@ -1,51 +1,49 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fffdf7;
-  --foreground: #1a1410;
+  --background: #fbf6e9;
+  --foreground: #1b1710;
 
-  /* Snaxzastic: roasted, tangy, everyday. Warm turmeric-yellow / green. */
-  --snax-50: #fffaea;
-  --snax-100: #fef0c2;
-  --snax-400: #f2b705;
-  --snax-500: #e0a300;
-  --snax-600: #b97e00;
-  --snax-900: #3d2e00;
-  --snax-accent: #5c7a29;
+  --ink: #1b1710;
+  --ink-2: #14110d;
 
-  /* Crespology: crafted, indulgent crunch. Rich red-orange. */
-  --cresp-50: #fff3ef;
-  --cresp-100: #ffdcd0;
-  --cresp-400: #ff6a3d;
-  --cresp-500: #ef4a1c;
-  --cresp-600: #c8330f;
-  --cresp-900: #400f04;
-  --cresp-accent: #8a1c0f;
+  --green: #1e6b45;
+  --green-dark: #14432e;
 
-  --ink-950: #171008;
+  --snax-400: #f2c438;
+  --snax-500: #e8b02a;
+  --snax-600: #e5ac22;
+  --snax-label: #b98a0f;
+
+  --cresp-400: #d8452a;
+  --cresp-600: #a8281b;
+  --cresp-700: #6e1710;
+  --cresp-bg: #2a0f0b;
+  --cresp-card: #3a1611;
+  --cresp-label: #f08a5d;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  --color-snax-50: var(--snax-50);
-  --color-snax-100: var(--snax-100);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+
+  --color-green: var(--green);
+  --color-green-dark: var(--green-dark);
+
   --color-snax-400: var(--snax-400);
   --color-snax-500: var(--snax-500);
   --color-snax-600: var(--snax-600);
-  --color-snax-900: var(--snax-900);
-  --color-snax-accent: var(--snax-accent);
+  --color-snax-label: var(--snax-label);
 
-  --color-cresp-50: var(--cresp-50);
-  --color-cresp-100: var(--cresp-100);
   --color-cresp-400: var(--cresp-400);
-  --color-cresp-500: var(--cresp-500);
   --color-cresp-600: var(--cresp-600);
-  --color-cresp-900: var(--cresp-900);
-  --color-cresp-accent: var(--cresp-accent);
-
-  --color-ink-950: var(--ink-950);
+  --color-cresp-700: var(--cresp-700);
+  --color-cresp-bg: var(--cresp-bg);
+  --color-cresp-card: var(--cresp-card);
+  --color-cresp-label: var(--cresp-label);
 
   --font-sans: var(--font-body);
   --font-display: var(--font-display);
@@ -54,10 +52,10 @@
 html {
   scroll-behavior: smooth;
   scrollbar-width: thin;
-  scrollbar-color: var(--snax-500) var(--background);
+  scrollbar-color: var(--snax-400) var(--background);
 }
 
-@keyframes marquee {
+@keyframes sfb-marquee {
   from {
     transform: translateX(0);
   }
@@ -66,17 +64,67 @@ html {
   }
 }
 
-.animate-marquee {
-  animation: marquee 32s linear infinite;
+@keyframes sfb-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.animate-marquee:hover {
-  animation-play-state: paused;
+.animate-sfb-marquee {
+  animation: sfb-marquee 30s linear infinite;
+}
+
+.animate-sfb-spin {
+  animation: sfb-spin 70s linear infinite;
+}
+
+@keyframes sfb-collide-left {
+  from {
+    transform: translateX(-70px) rotate(-6deg);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) rotate(-6deg);
+    opacity: 1;
+  }
+}
+
+@keyframes sfb-collide-right {
+  from {
+    transform: translateX(70px) rotate(7deg);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) rotate(7deg);
+    opacity: 1;
+  }
+}
+
+.animate-collide-left {
+  animation: sfb-collide-left 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-collide-right {
+  animation: sfb-collide-right 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.12s;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+@layer base {
+  a {
+    color: var(--green);
+  }
+
+  a:hover {
+    color: var(--green-dark);
+  }
 }
 
 ::-webkit-scrollbar {
@@ -89,10 +137,6 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(var(--snax-500), var(--cresp-500));
+  background: linear-gradient(var(--snax-400), var(--cresp-400));
   border-radius: 9999px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(var(--snax-600), var(--cresp-600));
 }

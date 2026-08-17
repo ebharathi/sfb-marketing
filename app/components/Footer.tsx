@@ -1,87 +1,52 @@
-const POLICY_LINKS = ["Refund Policy", "Privacy Policy", "Terms of Use", "Shipping Policy"];
-
 export function Footer() {
   return (
-    <footer id="contact" className="bg-white py-14 text-ink-950">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
-        <div className="grid grid-cols-1 gap-10 border-b border-ink-950/10 pb-10 sm:grid-cols-2 lg:grid-cols-4">
-          <div>
-            <p className="font-display text-lg font-extrabold">SFB</p>
-            <p className="mt-2 text-sm text-ink-950/60">
-              Slayd Foods Bharat Pvt. Ltd., home to Snaxzastic and
-              Crespology.
-            </p>
+    <footer id="contact" className="bg-ink-2 px-4 pt-15 pb-10 text-background/70 sm:px-10">
+      <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
+        <div>
+          <div className="mb-3.5 font-display text-2xl tracking-[0.18em] text-background">
+            SFB
           </div>
-
-          <div>
-            <p className="text-xs font-bold uppercase tracking-wide text-ink-950/40">
-              Brands
-            </p>
-            <ul className="mt-3 space-y-2 text-sm text-ink-950/70">
-              <li>
-                <a href="/#snaxzastic" className="hover:text-ink-950">
-                  Snaxzastic
-                </a>
-              </li>
-              <li>
-                <a href="/#crespology" className="hover:text-ink-950">
-                  Crespology
-                </a>
-              </li>
-              <li>
-                <a href="/distributor" className="hover:text-ink-950">
-                  Become a Distributor
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <p className="text-xs font-bold uppercase tracking-wide text-ink-950/40">
-              Policies
-            </p>
-            <ul className="mt-3 space-y-2 text-sm text-ink-950/70">
-              {POLICY_LINKS.map((link) => (
-                <li key={link}>
-                  <span className="cursor-default">{link}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <p className="text-xs font-bold uppercase tracking-wide text-ink-950/40">
-              Compliance & Contact
-            </p>
-            <ul className="mt-3 space-y-1.5 text-sm text-ink-950/70">
-              <li>CIN: [pending, confirm with legal]</li>
-              <li>Grievance Officer: [pending, confirm with legal]</li>
-              <li>
-                Plant: J261/5 MIDC, Tarapur, Boisar, Palghar, Maharashtra
-                401506
-              </li>
-              <li>
-                <a href="tel:+918005526727" className="hover:text-ink-950">
-                  +91 80055 26727
-                </a>
-              </li>
-              <li>
-                <a
-                  href="mailto:sales@slaydfoods.com"
-                  className="hover:text-ink-950"
-                >
-                  sales@slaydfoods.com
-                </a>
-              </li>
-            </ul>
-          </div>
+          <p className="m-0 max-w-[280px] text-sm leading-relaxed">
+            Slayd Foods Bharat Pvt. Ltd., home to Snaxzastic and Crespology.
+          </p>
         </div>
 
-        <p className="pt-6 text-xs text-ink-950/40">
-          © {new Date().getFullYear()} Slayd Foods Bharat Pvt. Ltd. Demo site.
-          Content and compliance details are placeholders pending client
-          confirmation.
-        </p>
+        <div className="flex flex-col gap-2.5 text-sm">
+          <div className="mb-1 font-semibold text-background">Brands</div>
+          <a href="/snaxzastic" className="text-background/70">Snaxzastic</a>
+          <a href="/crespology" className="text-background/70">Crespology</a>
+          <a href="/distributor" className="text-background/70">Become a Distributor</a>
+        </div>
+
+        <div className="flex flex-col gap-2.5 text-sm">
+          <div className="mb-1 font-semibold text-background">Policies</div>
+          <a href="/refund" className="text-background/70">Refund Policy</a>
+          <a href="/privacy" className="text-background/70">Privacy Policy</a>
+          <a href="/terms" className="text-background/70">Terms of Use</a>
+          <a href="/shipping" className="text-background/70">Shipping Policy</a>
+        </div>
+
+        <div className="flex flex-col gap-2.5 text-sm leading-relaxed">
+          <div className="mb-1 font-semibold text-background">
+            Compliance &amp; Contact
+          </div>
+          <div>CIN: [pending, confirm with legal]</div>
+          <div>Grievance Officer: [pending, confirm with legal]</div>
+          <div>
+            Plant: J261/5 MIDC, Tarapur, Boisar, Palghar, Maharashtra 401506
+          </div>
+          <a href="tel:+919876543210" className="text-background/70">
+            +91 98765 43210
+          </a>
+          <a href="mailto:hello@sfb-demo.com" className="text-background/70">
+            hello@sfb-demo.com
+          </a>
+        </div>
+      </div>
+      <div className="mx-auto mt-10 max-w-[1400px] border-t border-background/14 pt-5.5 text-[13px] text-background/45">
+        &copy; {new Date().getFullYear()} Slayd Foods Bharat Pvt. Ltd. Demo
+        site. Content and compliance details are placeholders pending client
+        confirmation.
       </div>
     </footer>
   );
